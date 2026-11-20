@@ -1,4 +1,4 @@
-# Winter mixed-layer deepening at Ocean Weather Station M
+# General Ocean Turbulence Model - Winter mixed-layer deepening at Ocean Weather Station M
 
 An independent single-column modelling study of winter mixed-layer deepening at Ocean Weather Station M in the Norwegian Sea, using the General Ocean Turbulence Model (GOTM). The study compares four turbulence closures against observations, with verification, validation and error estimation.
 
