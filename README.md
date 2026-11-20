@@ -27,8 +27,8 @@ Winter mixing in the Nordic Seas links air-sea heat loss to the formation of den
 
 ## Plan and progress
 
-- [ ] 1. Set up this repository
-- [ ] 2. Build GOTM v6.0.8 with CVMix
+- [x] 1. Set up this repository
+- [x] 2. Build GOTM v6.0.8 with CVMix
 - [ ] 3. Run the GOTM test cases and compare the four closures at Ocean Weather Station Papa
 - [ ] 4. Download the Station M observations
 - [ ] 5. Calculate the observed winter mixed-layer depth and choose the baseline winter
