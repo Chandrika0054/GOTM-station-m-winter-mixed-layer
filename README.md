@@ -35,7 +35,7 @@ Winter mixing in the Nordic Seas links air-sea heat loss to the formation of den
 - [ ] 6. Run GOTM at Station M with ERA5 forcing (Figure 1: model against observations)
 - [ ] 7. Grid convergence test (Figure 2)
 - [ ] 8. Verify the KPP and k-ω configurations
-- [ ] 9. Run the experiments: four closures across a range of forcing strengths
+- [ ] 9. Run the experiments: four closures, three vertical resolutions and three forcing strengths, with an analysis of variance to attribute the spread
 - [ ] 10. Write the report
 
 ## Planned repository structure
