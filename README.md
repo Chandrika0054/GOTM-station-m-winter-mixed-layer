@@ -63,11 +63,11 @@ Winter mixing in the Nordic Seas links air-sea heat loss to the formation of den
 README.md            this file
 SETUP.md             build instructions and configuration notes
 scripts/
-  run_closures.py    runs a GOTM case with each of the four closures
-  mld.py             mixed-layer depth, same criterion for model and observations
-  plot_closures.py   plots mixed-layer depth for each closure
-  era5_download.py   downloads ERA5 hourly fluxes at 66°N, 2°E for one winter
-  era5_to_gotm.py    converts ERA5 output into GOTM flux files
+  run_closures.py        runs a GOTM case with each of the four closures
+  mld.py                 mixed-layer depth, same criterion for model and observations
+  plot_closures.py       plots mixed-layer depth for each closure
+  era5_download.py       downloads ERA5 hourly fluxes at 66°N, 2°E for one winter
+  era5_to_gotm.py        converts ERA5 output into GOTM flux files
   inspect_station_m.py   summarises the Station M files (records, profiles, depths, quality flags)
   winter_coverage.py     counts usable profiles in each winter to choose the baseline winter
   observed_mld.py        observed mixed-layer depth and the winter comparison figure
@@ -82,6 +82,7 @@ data/raw/            observations and forcing (not tracked; see SETUP.md)
 2. Download the Station M observations into `data/raw/`.
 3. Download and convert the ERA5 forcing with the two `era5_` scripts.
 4. Run the closures with `scripts/run_closures.py` and plot them with `scripts/plot_closures.py`.
+5. Calculate the observed mixed-layer depth and plot the winters with `scripts/observed_mld.py`.
 
 Raw data files are not stored in this repository. They are downloaded from their original providers.
 
