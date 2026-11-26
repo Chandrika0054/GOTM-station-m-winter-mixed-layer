@@ -2,7 +2,7 @@
 
 An independent single-column modelling study of winter mixed-layer deepening at Ocean Weather Station M in the Norwegian Sea, using the General Ocean Turbulence Model (GOTM). The study compares four turbulence closures against observations, with verification, validation and error estimation.
 
-**Status:** in progress. Steps 1 to 3 were completed on 20 November 2026, and results will be added here as each stage is completed.
+**Status:** in progress. Steps 1 to 3 were completed on 20 November 2026, and Steps 4 and 5 on 26 November 2026. Results are added below as each stage is completed.
 
 ## Scientific question
 
@@ -19,7 +19,7 @@ Winter mixing in the Nordic Seas links air-sea heat loss to the formation of den
 | Site | Ocean Weather Station M, 66°N, 2°E, Norwegian Sea |
 | Model | GOTM v6.0.8, built with CVMix |
 | Turbulence closures | k-ε, k-ω, Mellor-Yamada 2.5, KPP |
-| Surface forcing | ERA5 hourly heat, freshwater and momentum fluxes, prescribed |
+| Surface forcing | ERA5 hourly heat and momentum fluxes, prescribed (freshwater flux not yet included) |
 | Observations | OceanSITES Station M temperature and salinity profiles (1948 to 2009) |
 | Period | One baseline winter, September to May, chosen from the observations |
 | Mixed-layer depth criterion | Density increase of 0.03 kg m⁻³ from the 10 m value |
@@ -27,16 +27,35 @@ Winter mixing in the Nordic Seas links air-sea heat loss to the formation of den
 
 ## Plan and progress
 
-- [x] 1. Set up this repository
-- [x] 2. Build GOTM v6.0.8 with CVMix
-- [x] 3. Run the GOTM test cases and compare the four closures at Ocean Weather Station Papa
-- [x] 4. Download the Station M observations
-- [x] 5. Calculate the observed winter mixed-layer depth and choose the baseline winter
-- [ ] 6. Run GOTM at Station M with ERA5 forcing (Figure 1: model against observations)
-- [ ] 7. Grid convergence test (Figure 2)
-- [ ] 8. Verify the KPP and k-ω configurations
-- [ ] 9. Run the experiments: four closures, three vertical resolutions and three forcing strengths, with an analysis of variance to attribute the spread
-- [ ] 10. Write the report
+1. Set up this repository (done, 20 November 2026)
+2. Build GOTM v6.0.8 with CVMix (done, 20 November 2026)
+3. Run the GOTM test cases and compare the four closures at Ocean Weather Station Papa (done, 20 November 2026)
+4. Download the Station M observations (done, 26 November 2026)
+5. Calculate the observed winter mixed-layer depth and choose the baseline winter (done, 26 November 2026)
+6. Run GOTM at Station M with ERA5 forcing (Figure 1: model against observations)
+7. Grid convergence test (Figure 2)
+8. Verify the KPP and k-ω configurations
+9. Run the experiments: four closures, three vertical resolutions and three forcing strengths, with an analysis of variance to attribute the spread
+10. Write the report
+
+## Results so far
+
+### Step 3: four closures at Ocean Weather Station Papa (1961 to 1962)
+- All four closures ran successfully under identical forcing.
+- k-ε and KPP agree closely for most of the year: about 80 m in late winter and 10 to 25 m in summer.
+- Mellor-Yamada 2.5 is noisier and shallower in winter (mostly 40 to 60 m).
+- k-ω stays near 10 m from June to October; this will be checked in Step 8 before its results are used.
+
+![Mixed-layer depth for four closures at Station Papa](my_papa_closures.png)
+
+### Step 5: observed winter mixed layer at Station M
+- **Data:** OceanSITES Station M CTD record, 1948 to 2009, using only measurements where both temperature and salinity are flagged as good (105,018 of 114,951 records).
+- **Method:** TEOS-10 potential density (gsw); the mixed-layer depth is where density first exceeds its 10 m value by 0.03 kg m⁻³, interpolated between sampling levels.
+- **Baseline winter:** September 2002 to May 2003, chosen for its vertical resolution (10 sampling levels in the top 500 m) and regular sampling (no gap longer than 21 days).
+- **Result:** the typical mixed layer deepens from about 20 m in September to about 240 to 270 m in mid-February, then restratifies to 10 to 20 m by late May. The deepest single profile reached 345 m on 14 February 2003.
+- **Next:** ERA5 surface forcing for the baseline winter is being downloaded for the first Station M model run.
+
+![Observed mixed-layer depth at Station M](observed_mld_winters.png)
 
 ## Planned repository structure
 
@@ -49,6 +68,9 @@ scripts/
   plot_closures.py   plots mixed-layer depth for each closure
   era5_download.py   downloads ERA5 hourly fluxes at 66°N, 2°E for one winter
   era5_to_gotm.py    converts ERA5 output into GOTM flux files
+  inspect_station_m.py   summarises the Station M files (records, profiles, depths, quality flags)
+  winter_coverage.py     counts usable profiles in each winter to choose the baseline winter
+  observed_mld.py        observed mixed-layer depth and the winter comparison figure
 config/              GOTM configuration for Station M
 figures/             figures produced by the study
 data/raw/            observations and forcing (not tracked; see SETUP.md)
